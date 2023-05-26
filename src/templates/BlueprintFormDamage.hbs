@@ -1,0 +1,26 @@
+<div class="repeatable-item">
+	{{> BlueprintFormRepeatingMenu}}
+	<div class="form-group">
+		<label>Урон</label>
+		<select class="form-control custom-toggle" data-name="type">
+			<option value="custom" {{selected type "custom"}}>Пользовательский</option>
+			<option value="Кислота" {{selectedDefault type "Кислота"}}>Кислота</option>
+			<option value="Дробящий" {{selected type "Дробящий"}}>Дробящий</option>
+			<option value="Холод" {{selected type "Холод"}}>Холод</option>
+			<option value="Огонь" {{selected type "Огонь"}}>Огонь</option>
+			<option value="Силовой" {{selected type "Силовой"}}>Силовой</option>
+			<option value="Молния" {{selected type "Молния"}}>Молния</option>
+			<option value="Некротический" {{selected type "Некротический"}}>Некротический</option>
+			<option value="Колющий" {{selected type "Колющий"}}>Колющий</option>
+			<option value="Яд" {{selected type "Яд"}}>Яд</option>
+			<option value="Психический" {{selected type "Психический"}}>Психический</option>
+			<option value="Лучистый" {{selected type "Лучистый"}}>Лучистый</option>
+			<option value="Режущий" {{selected type "Режущий"}}>Режущий</option>
+			<option value="Гром" {{selected type "Гром"}}>Гром</option>
+		</select>
+	</div>
+	<div class="form-group custom" {{{customToggle type}}}>
+		<label>Type</label>
+		<input type="text" class="form-control" data-name="custom" {{{setValue custom}}}>
+	</div>
+</div>

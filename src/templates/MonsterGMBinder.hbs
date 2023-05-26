@@ -1,0 +1,116 @@
+___
+> ## {{description.name}}
+> *{{fmtCapitalise (fmtMonsterDescription description.size description.type tags description.alignment)}}*
+> ___
+> - **Класс Защиты** {{#if ac.value}}{{ac.value}} {{/if}}{{#if ac.type}}({{ac.type}}){{/if}}
+> - **Хиты** {{#if hp.average}}{{hp.average}} {{/if}}{{#if hp.roll}}({{hp.roll}}){{/if}}
+> - **Скорость** {{{fmtMonsterSpeeds speeds}}}
+> ___
+> |СИЛ|ЛОВ|ТЕЛ|ИНТ|МУД|ХАР|
+> |:---:|:---:|:---:|:---:|:---:|:---:|
+> |{{abilities.str.score}} ({{{fmtModifier abilities.str.modifier}}})|{{abilities.dex.score}} ({{{fmtModifier abilities.dex.modifier}}})|{{abilities.con.score}} ({{{fmtModifier abilities.con.modifier}}})|{{abilities.int.score}} ({{{fmtModifier abilities.int.modifier}}})|{{abilities.wis.score}} ({{{fmtModifier abilities.wis.modifier}}})|{{abilities.cha.score}} ({{{fmtModifier abilities.cha.modifier}}})|
+> ___
+{{#if savingThrows}}
+{{#if isQuickstart}}
+{{#if attack.isActive}}
+> - **Спасброски** {{fmtMonsterSavingThrowsQuickstartActiveGMBinder savingThrows}}
+{{/if}}
+{{#unless attack.isActive}}
+> - **Спасброски** {{fmtMonsterSavingThrowsQuickstart savingThrows}}
+{{/unless}}
+{{/if}}
+{{#unless isQuickstart}}
+> - **Спасброски** {{fmtMonsterSavingThrows savingThrows}}
+{{/unless}}
+{{/if}}
+{{#if skills}}
+> - **Навыки** {{#each skills}}{{fmtCapitalise name}} {{fmtModifier modifier}}{{#unless @last}}, {{/unless}}{{/each}}
+{{/if}}
+{{#if vulnerabilities}}
+> - **Уязвимости к урону** {{#each vulnerabilities}}{{this}}{{#unless @last}}, {{/unless}}{{/each}}
+{{/if}}
+{{#if resistances}}
+> - **Сопротивление урону** {{#each resistances}}{{this}}{{#unless @last}}, {{/unless}}{{/each}}
+{{/if}}
+{{#if immunities}}
+> - **Иммунитет к урону** {{#each immunities}}{{this}}{{#unless @last}}, {{/unless}}{{/each}}
+{{/if}}
+{{#if conditions}}
+> - **Иммунитет к состояниям** {{#each conditions}}{{this}}{{#unless @last}}, {{/unless}}{{/each}}
+{{/if}}
+{{#if senses}}
+> - **Чувства** {{fmtMonsterSenses senses}}
+{{/if}}
+{{#if languages}}
+> - **Языки** {{#each languages}}{{fmtCapitalise this}}{{#unless @last}}, {{/unless}}{{/each}}
+{{/if}}
+> - **Опасность** {{{challenge.rating}}} ({{challenge.xp}} опыта)
+> ___
+{{#if attack.bonus}}
+> - **Атаки** {{#if attack.isActive}}КС {{attack.bonus}} против КЗ{{#if attack.isActiveSmaller}} − 10{{/if}}{{/if}}{{#unless attack.isActive}}{{fmtModifier attack.bonus}} к попаданию{{/unless}}. _Попадание:_ {{attack.damage}} damage
+> - **КС атак** Основной КС {{{dc.primary}}}, Вторичный КС {{dc.secondary}}
+{{#if attack.isActive}}
+> - **Активная защита** {{#if attack.isActiveSmaller}}_(Меньший вариант)_ {{/if}} Вы не совершаете броски атаки. Вместо этого ваши цели совершают броски защиты.
+{{/if}}
+> ___
+{{/if}}
+{{#if traits}}
+{{#each traits}}
+> ***{{name}}.*** {{fmtGMBinderMarkdown detail}}
+>
+{{/each}}
+{{/if}}
+{{#if actions}}
+> ### Действия
+{{#each actions}}
+> ***{{name}}.*** {{fmtGMBinderMarkdown detail}}
+>
+{{/each}}
+{{/if}}
+{{#if bonus_actions}}
+> ### Бонусные действия
+{{#each bonus_actions}}
+> ***{{name}}.*** {{fmtGMBinderMarkdown detail}}
+>
+{{/each}}
+{{/if}}
+{{#if reactions}}
+> ### Реакции
+{{#each reactions}}
+> ***{{name}}.*** {{fmtGMBinderMarkdown detail}}
+>
+{{/each}}
+{{/if}}
+{{#if paragonActions}}
+> ### Действия парагона
+> существа может совершить {{paragonActions}} действия парагона, выбирая между движением или действием. Только одно действие парагона может быть использовано единовременно и только в конце хода другого существа. Существо восстанавливает использованные действия парагона в начале своего хода.
+{{/if}}
+{{#if legendaryActions}}
+> ### Легендарные действия
+{{#if legendaryActionsPerRound}}
+> Существо может совершить {{legendaryActionsPerRound}} легендарных действия, выбрав из предложенных ниже вариантов. Одновременно можно использовать только один вариант легендарного действия и только в конце хода другого существа. Существо восстанавливает потраченные легендарные действия в начале своего хода.
+>
+{{/if}}
+{{#each legendaryActions}}
+> ***{{name}}.*** {{fmtGMBinderMarkdown detail}}
+>
+{{/each}}
+{{/if}}
+{{#if lairActions}}
+> ### Действия логова
+{{#if lairActionsInitiative}}
+> На счете инициативы {{lairActionsInitiative}} (уступая всем в случае равенство), существо может совершить действие логова, выбрав один из следующих эффектов. При этом нельзя использовать один и тот же эффект дважды подряд.
+>
+{{/if}}
+{{#each lairActions}}
+> ***{{name}}.*** {{fmtGMBinderMarkdown detail}}
+>
+{{/each}}
+{{/if}}
+{{#if notes}}
+> ___
+{{#each notes}}
+> {{fmtGMBinderMarkdown this}}
+>
+{{/each}}
+{{/if}}

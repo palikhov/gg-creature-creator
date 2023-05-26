@@ -1,0 +1,49 @@
+<div class="repeatable-item">
+	{{> BlueprintFormRepeatingMenu}}
+	<div class="form-group">
+		<label>Навык</label>
+		<select class="form-control custom-toggle" data-name="name">
+			<option value="custom" {{selected name "custom"}}>Пользовательский</option>
+			<option value="Акробатика" {{selectedDefault name "acrobatics"}}>Акробатика</option>
+			<option value="Обращение с животными" {{selected name "animal handling"}}>Обращение с животными</option>
+			<option value="Магия" {{selected name "arcana"}}>Магия</option>
+			<option value="Атлетика" {{selected name "athletics"}}>Атлетика</option>
+			<option value="Обман" {{selected name "deception"}}>Обман</option>
+			<option value="История" {{selected name "history"}}>История</option>
+			<option value="Проницательность" {{selected name "insight"}}>Проницательность</option>
+			<option value="Устрашение" {{selected name "intimidation"}}>Устрашение</option>
+			<option value="Анализ" {{selected name "investigation"}}>Анализ</option>
+			<option value="Медицина" {{selected name "medicine"}}>Медицина</option>
+			<option value="Природа" {{selected name "nature"}}>Природа</option>
+			<option value="Восприятие" {{selected name "perception"}}>Восприятие</option>
+			<option value="Выступление" {{selected name "performance"}}>Выступление</option>
+			<option value="Убеждение" {{selected name "persuasion"}}>Убеждение</option>
+			<option value="Религия" {{selected name "religion"}}>Религия</option>
+			<option value="Ловкость рук" {{selected name "sleight of hand"}}>Ловкость рук</option>
+			<option value="Скрытность" {{selected name "stealth"}}>Скрытность</option>
+			<option value="Выживание" {{selected name "survival"}}>Выживание</option>
+		</select>
+	</div>
+	<div class="form-group custom" {{{customToggle name}}}>
+		<label>Название</label>
+		<input type="text" class="form-control" data-name="custom.name" {{{setValue custom.name}}}>
+	</div>
+	<div class="form-group custom" {{{customToggle name}}}>
+		<label>Характеристика</label>
+		<select class="form-control" data-name="custom.ability">
+			<option value="str" {{selectedDefault custom.ability "str"}}>Сила</option>
+			<option value="dex" {{selected custom.ability "dex"}}>Ловкость</option>
+			<option value="con" {{selected custom.ability "con"}}>Телосложение</option>
+			<option value="int" {{selected custom.ability "int"}}>Интеллект</option>
+			<option value="wis" {{selected custom.ability "wis"}}>Мудрость</option>
+			<option value="cha" {{selected custom.ability "cha"}}>Харизма</option>
+		</select>
+	</div>
+	<div class="form-group">
+		<label>Владение навыком</label>
+		<select class="form-control" data-name="proficiency">
+			<option value="proficient" {{selectedDefault proficiency "proficient"}}>Владение</option>
+			<option value="expertise" {{selected proficiency "expertise"}}>Экспертиза</option>
+		</select>
+	</div>
+</div>

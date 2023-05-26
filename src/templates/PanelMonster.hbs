@@ -1,0 +1,167 @@
+<div class="card panel vault edit">
+	<div class="card-header">
+		<span class="card-icon fas fa-dragon"></span> Убежище <span class="divider">»</span> <span class="subtitle"> редактировать существо #{{id}}</span>
+	</div>
+	<div class="card-body">
+		<div class="monster-preview"></div>
+		<div class="blueprint-form"></div>
+	</div>
+	<div class="card-footer text-right">
+		<div>
+			<a class="btn btn-secondary" href="#/vault">
+				<span class="fas fa-arrow-left"></span> Убежище
+			</a>
+		</div>
+		<div>
+			<div class="dropdown dropdown-options dropup">
+				<input type="file" accept=".json" id="monster-import-file"/>
+				<button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown">
+					<span class="fas fa-cog"></span>
+				</button>
+				<div class="dropdown-menu dropdown-menu-right">
+					<button type="button" class="dropdown-item btn-reset" data-toggle="modal" data-target="#modal-delete">
+						<span class="fas fa-trash"></span>Удалить
+					</button>
+					<button type="button" class="dropdown-item btn-save-as-new">
+						<span class="fas fa-copy"></span>Сделать копию
+					</button>
+					<div class="dropdown-divider"></div>
+					<button type="button" class="dropdown-item btn-export-to-ii">
+						<span class="fas fa-file-export"></span>Экспортировать в Improved Initiative .json
+					</button>
+					<button type="button" class="dropdown-item btn-export-to-ii-clipboard">
+						<span class="fas fa-clipboard"></span>Копировать Improved Initiative в буфер обмена
+					</button>
+					<div class="dropdown-divider"></div>
+					<button type="button" class="dropdown-item btn-show-gmbinder">
+						<span class="fas fa-book-open"></span>Показать в формате GMBinder
+					</button>
+					<div class="dropdown-divider"></div>
+					<button type="button" class="dropdown-item btn-export-to-json">
+						<span class="fas fa-file-export"></span>Сохранить в .json
+					</button>
+					<button type="button" class="dropdown-item btn-import-from-json">
+						<span class="fas fa-file-import"></span>Загрузить из .json
+					</button>
+				</div>
+			</div>
+			<button class="btn btn-primary btn-save">
+				 <span class="fas fa-save"></span> Изменения соранены
+			</button>
+		</div>
+	</div>
+	<div id="modal-delete" class="modal fade">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">
+						<span class="card-icon fas fa-trash"></span> Удалить существо #{{id}}
+					</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body text-center">
+					<p>Вы действительно хотите удалить это существо?</p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary btn-cancel" data-dismiss="modal">
+						<span class="fas fa-times"></span> Нет
+					</button>
+					<button type="button" class="btn btn-primary btn-confirm" data-dismiss="modal">
+						<span class="fas fa-check"></span> Да
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="modal-updated" class="modal fade">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">
+						<span class="card-icon fas fa-save"></span> Изменения сохранены
+					</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body text-center">
+					<p>Ваши изменения в существо  #{{id}} бьли сохранены.</p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary" data-dismiss="modal">
+						<span class="fas fa-check"></span> Ок
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="modal-new-monster" class="modal fade">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">
+						<span class="card-icon fas fa-save"></span> Создано существо #{{id}}
+					</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body text-center">
+					<p>Вы добавили существо #{{id}} в Убежище.</p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary btn-add-another" data-dismiss="modal">
+						<span class="fas fa-plus"></span> Добавить другое существо
+					</button>
+					<button type="button" class="btn btn-primary" data-dismiss="modal">
+						<span class="fas fa-check"></span> Ок
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="modal-import-monster-failure" class="modal fade">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">
+						<span class="card-icon fas fa-file-import"></span> Существо не найдено
+					</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body text-center">
+					<p>Файл не содержит корректную статистику существа</p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary" data-dismiss="modal">
+						<span class="fas fa-check"></span> Ok
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="modal-gmbinder" class="modal fade">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">
+						<span class="card-icon fas fa-book-open"></span> GMBinder
+					</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body"></div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary" data-dismiss="modal">
+						<span class="fas fa-check"></span> Ok
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
